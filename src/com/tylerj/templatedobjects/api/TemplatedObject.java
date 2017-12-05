@@ -10,4 +10,8 @@ public class TemplatedObject {
         this.objectName = objectName;
         this.objectFields = objectFields;
     }
+
+    public void forceTemplateGen() {
+
+    }
 }
