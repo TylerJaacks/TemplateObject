@@ -1,17 +1,29 @@
 package com.tylerj.templatedobjects.api;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
+/**
+ * TemplatedObject is a template for a Object to be created at build time.
+ */
 public class TemplatedObject {
-    private String objectName;
-    private HashMap<String, String[]> objectFields;
+    private ArrayList<TemplatedField> fields = new ArrayList<>();
+    private ArrayList<TemplatedFunction> functions = new ArrayList<TemplatedFunction>();
 
-    public TemplatedObject(String objectName, HashMap<String, String[]> objectFields) {
-        this.objectName = objectName;
-        this.objectFields = objectFields;
+    /**
+     * Constructs a TemplatedObject from just an ArrayList of TemplatedFields.
+     * @param fields ArrayList of fields for the TemplatedObject.
+     */
+    public TemplatedObject(ArrayList<TemplatedField> fields) {
+        this.fields = fields;
     }
 
-    public void forceTemplateGen() {
-
+    /**
+     * Constructs a TemplatedObject from just an ArrayList of TemplatedFields and TemplatedFunctions.
+     * @param fields ArrayList of fields for the TemplatedObject.
+     * @param functions ArrayList of functions for the TemplatedObject.
+     */
+    public TemplatedObject(ArrayList<TemplatedField> fields, ArrayList<TemplatedFunction> functions) {
+        this.fields = fields;
+        this.functions = functions;
     }
 }

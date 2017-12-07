@@ -1,15 +1,16 @@
 package com.tylerj.templatedobjects.examples;
 
+import com.tylerj.templatedobjects.api.AccessModifierType;
+import com.tylerj.templatedobjects.api.TemplatedField;
 import com.tylerj.templatedobjects.api.TemplatedObject;
 
 import java.util.HashMap;
 
 public class SampleClass {
-    HashMap<String, String[]> fields = new HashMap<>();
-    String[] fieldType = {"public", "String"};
-    TemplatedObject animal = new TemplatedObject("Animal", fields);
-
     public void Main() {
-        fields.put("name", fieldType);
+        TemplatedField<String> animalName = new TemplatedField<>(AccessModifierType.PUBLIC, "animalName");
+        TemplatedObject animal = new TemplatedObject(animalName);
+
+        animalName.toString();
     }
 }
