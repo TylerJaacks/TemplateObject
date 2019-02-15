@@ -1,13 +1,18 @@
 package com.tylerj.templatedobjects.api;
 
+import com.google.common.reflect.TypeToken;
+
+import java.lang.reflect.ParameterizedType;
+
 /**
  * TemplatedField is a template for a field to added to a TemplateObject.
  * @param <T> Defines the type for the field.
  */
 public class TemplatedField<T> {
     private AccessModifierType accessModifierType;
-    private T type;
+    private String type;
     private String name;
+    private T value;
 
     /**
      * Constructs a TemplatedField given an AccessModifiedType and name.
@@ -17,6 +22,19 @@ public class TemplatedField<T> {
     public TemplatedField(AccessModifierType accessModifierType, String name) {
         this.accessModifierType = accessModifierType;
         this.name = name;
+        this.value = null;
+    }
+
+    /**
+     * Constructs a TemplatedField given an AccessModifiedType, name, and value.
+     * @param accessModifierType
+     * @param name
+     * @param value
+     */
+    public TemplatedField(AccessModifierType accessModifierType, String name, T value) {
+        this.accessModifierType = accessModifierType;
+        this.name = name;
+        this.value = value;
     }
 
     /**
@@ -26,6 +44,10 @@ public class TemplatedField<T> {
      */
     @Override
     public String toString() {
-        return new String(accessModifierType.toString().toLowerCase() + " " + type.getClass() + " " + name);
+        if (value == null) {
+            return accessModifierType.toString().toLowerCase() + " " + type.getClass() + " " + name + " = null;";
+        } else {
+            return accessModifierType.toString().toLowerCase() + " " + type.getClass() + " " + name + " = " + value + ";";
+        }
     }
 }
